@@ -5,5 +5,4 @@ Assignment A05 contains the following file/folders:
 
 - ascii_art.py - This file contains code that accepts a file name and converts an image to ascii art.
 - Richie Brusher.ttf - True font file.
-- vans-logo.png - Image used to test code
 - cmrvl.jpg - Image used to test code.
