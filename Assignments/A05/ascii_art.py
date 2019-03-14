@@ -16,15 +16,18 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 def img_to_ascii(**kwargs):
     """ 
     The ascii character set we use to replace pixels.
-    0 - 17 = 'V' (darkest character)
+    0 - 17 = '=' (darkest character)
     238-255 = '.' (lightest character)
     """
     
-    ascii_chars = [ "V", 'M', 'D', 'K', 'A', 'l','f','j','q','m','v', 'a', 'c', ',', '.']
+    ascii_chars = [ "=", 'M', 'D', 'K', 'A', 'l','f','j','q','m','v', 'a', 'c', ',', '.']
   
-    width = kwargs.get('width',200)
-    height = kwargs.get('height',200)
+    width = kwargs.get('width',800)
+    height = kwargs.get('height',800)
     path = kwargs.get('path',None)
+    font_name=kwargs.get('font_name')
+    font_size=kwargs.get('font_size')
+    saved_image = kwargs.get('saved_image')
     
     #Opens the image
     im = Image.open(path)
@@ -37,7 +40,7 @@ def img_to_ascii(**kwargs):
     #Creates a new blank image
     newImg = Image.new('RGBA',(w,h),(255,255,255,255))
     #Sets the font
-    fnt = ImageFont.truetype('Richie Brusher.ttf',12)
+    fnt = ImageFont.truetype(font_name,font_size)
     #Draws on new image
     drawOnMe = ImageDraw.Draw(newImg)
     imlist = list(im.getdata())
@@ -51,8 +54,8 @@ def img_to_ascii(**kwargs):
             #Gets the RBGA/RBG value of the pixel
             val = test[x,y]
             #Shifts the width and height by 10
-            wid = x +10
-            y += 10
+            wid = x +15
+            y += 15
             #Calculates which ascii char to replace a pixel with based on color
             avg = sum(val)//4
             uni = ascii_chars[avg//25]
@@ -63,7 +66,7 @@ def img_to_ascii(**kwargs):
     #Shows and saves the new image
     
     newImg.show()
-    newImg.save('outputimage.png')
+    newImg.save(saved_image)
 
     
     
@@ -84,6 +87,20 @@ def resize(img,width):
 
 if __name__=='__main__':
     #Gets the path of the new image
-    path = 'cmrvl.jpg'
+
+    if(len(sys.argv) ==5):
+        # Gets the values from command line and stores them in the respective variables
+        path = sys.argv[1]
+        saved_image = sys.argv[2]
+        font_name =sys.argv[3]
+        font_size = int(sys.argv[4])
+    
+    else:
+        #Default values incase the user did not input any
+        path='input_images/cmrvl.jpg'
+        saved_image ='output_images/outputimage.png'
+        font_name = 'Shailena.ttf'
+        font_size = 6
+
     #Calls the function convert the image to ascii    
-    img_to_ascii(path=path,width=400)
+    img_to_ascii(path=path,width=800)
