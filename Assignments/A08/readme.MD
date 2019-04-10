@@ -3,5 +3,5 @@
 
 Assignment A08 contains the following file/folders:
 
-- mosaicart.py - to run  python <filename> <originalimage> <emojifolderlocation>
+- mosaicart.py - to run  python -filename- -originalimage- -emojifolderlocation-
 - Emojis - Folder containing test images to be comapred
