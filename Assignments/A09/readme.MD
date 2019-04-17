@@ -1,6 +1,6 @@
-# Assignment 9 - 2048 Statergy Game
+# Assignment 9 - 2048 Strategy Game
 
-## 2048 Statergy Game
+## 2048 Strategy Game
 
 ### Introduction 
 
