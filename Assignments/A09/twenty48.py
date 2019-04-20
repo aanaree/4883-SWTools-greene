@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3
 from Tkinter import *
-from ttk import Button,Combobox
+from tkinter import ttk
+#from ttk import Button,Combobox
 import random
 
 class Matrix():
